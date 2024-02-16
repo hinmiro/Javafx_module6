@@ -85,6 +85,7 @@ public class CurrencyConrollerGui extends Application {
 
         Scene view = new Scene(layout);
 
+        //Added button color
         view.getStylesheets().add("style.css");
 
         stage.setScene(view);
