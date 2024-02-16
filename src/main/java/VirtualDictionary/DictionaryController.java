@@ -2,7 +2,7 @@ package VirtualDictionary;
 
 public class DictionaryController {
     static Dictionary dictionary = new Dictionary();
-    private DictionaryView gui;
+    static private DictionaryView gui;
 
     public DictionaryController(DictionaryView gui) {
         this.gui = gui;
