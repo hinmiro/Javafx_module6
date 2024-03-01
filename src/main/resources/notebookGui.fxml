@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="489.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NoteBook.Controller">
+   <children>
+      <AnchorPane fx:id="anchor" prefHeight="490.0" prefWidth="702.0">
+         <children>
+            <TextField fx:id="titleField" layoutX="27.0" layoutY="83.0" promptText="Title" style="-fx-background-radius: 5;" />
+            <Label fx:id="noteLabel" layoutX="291.0" layoutY="14.0" text="Notebook">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="noteArea" layoutX="27.0" layoutY="126.0" prefHeight="97.0" prefWidth="341.0" promptText="Notes" style="-fx-background-color: #c7ffdd;" />
+            <Button fx:id="submitButton" layoutX="412.0" layoutY="199.0" mnemonicParsing="false" onAction="#submitNote" text="Submit">
+               <effect>
+                  <Blend mode="GREEN">
+                     <topInput>
+                        <Glow />
+                     </topInput>
+                  </Blend>
+               </effect>
+            </Button>
+            <Button fx:id="removeButton" layoutX="504.0" layoutY="199.0" mnemonicParsing="false" onAction="#removeNote" text="Remove note">
+               <effect>
+                  <Blend mode="RED">
+                     <topInput>
+                        <Glow />
+                     </topInput>
+                  </Blend>
+               </effect>
+            </Button>
+            <ListView fx:id="display" layoutX="27.0" layoutY="236.0" prefHeight="240.0" prefWidth="649.0" style="-fx-background-color: #d4f7ff;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.10440000146627426" green="0.8189600110054016" blue="0.8700000047683716" opacity="0.5661094188690186" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ListView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
