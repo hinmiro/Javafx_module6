@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+
+import javax.swing.*;
 
 public class PetGui extends Application {
     @Override
@@ -13,6 +16,8 @@ public class PetGui extends Application {
         Parent root = fxmlLoader.load();
 
         stage.setScene(new Scene(root));
+        Image icon = new Image(getClass().getResourceAsStream("/pet1.png"));
+        stage.getIcons().add(icon);
         stage.show();
     }
 
