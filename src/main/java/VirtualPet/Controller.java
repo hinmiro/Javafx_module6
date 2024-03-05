@@ -2,53 +2,79 @@ package VirtualPet;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
+import java.util.Random;
 
 public class Controller {
+    private static Random rand;
     @FXML
     private Pane pane;
     @FXML
-    private ImageView pet;
+    private ImageView petImage;
     @FXML
     private ToggleButton startButton;
+    private PetThread pet;
+    @FXML
+    private ToggleButton followButton;
+    @FXML
+    private Button feedButton;
+    @FXML
+    private Canvas visualDisplay;
+
+    private double height, width;
+    private double foodH, foodW;
 
     @FXML
     public void initialize() {
+        rand = new Random();
+        pet = new PetThread(petImage, pane, startButton, followButton);
+        followButton.setDisable(true);
+        pet.start();
     }
 
 
     public void startStop() {
         if (startButton.isSelected()) {
             startButton.setText("Stop");
-            pane.setOnMouseMoved(this::petFollow);
+            followButton.setDisable(false);
         } else {
-            pane.setOnMouseMoved(null);
-            pet.setLayoutY(pane.getHeight()/2);
-            pet.setLayoutX(pane.getWidth()/2);
+            startButton.setText("Start");
         }
+    }
+
+    public void followToggle() {
+        if (followButton.isSelected()) {
+            pane.setOnMouseMoved(this::petFollow);
+        }
+        else {
+            pane.setOnMouseMoved(null);
+            pet.moveToCenter();
+        }
+    }
+
+
+    public void petFollow(MouseEvent mouseEvent) {
+        pet.petFollow(mouseEvent);
+    }
+
+    public void feed() {
+
+        height = pane.getHeight();
+        width = pane.getWidth();
+        foodH = rand.nextDouble()*height;
+        foodW = rand.nextDouble()*width;
+        System.out.println(foodW);
+        System.out.println(foodH);
+        pet.feedingTime(foodH, foodW);
     }
 
     public static void main(String[] args) {
+
         PetGui.launch(PetGui.class);
     }
 
-    public void petFollow(MouseEvent mouseEvent) {
-        double mouseX = mouseEvent.getSceneX();
-        double mouseY = mouseEvent.getSceneY();
-        double petX = pet.getLayoutX() + pet.getFitWidth() / 2;
-        double petY = pet.getLayoutY() + pet.getFitHeight() / 2;
-
-        double distance = Math.sqrt(Math.pow(mouseX - petX, 2) + Math.pow(mouseY - petY, 2));
-
-        if (distance > 5) {
-            double newX = petX + (mouseX - petX) * 0.01;
-            double newY = petY + (mouseY - petY) * 0.01;
-            pet.setLayoutX(newX - pet.getFitWidth() / 2);
-            pet.setLayoutY(newY - pet.getFitHeight() / 2);
-        }
-    }
 }

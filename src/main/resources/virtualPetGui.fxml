@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.Light.Distant?>
@@ -34,11 +35,13 @@
             </Lighting>
          </effect>
       </Label>
-      <ImageView fx:id="pet" fitHeight="44.0" fitWidth="53.0" layoutX="354.0" layoutY="227.0">
+      <ImageView fx:id="petImage" fitHeight="44.0" fitWidth="53.0" layoutX="354.0" layoutY="227.0">
          <image>
             <Image url="@pet1.png" />
          </image>
       </ImageView>
-      <ToggleButton fx:id="startButton" accessibleText="Stop" layoutX="600.0" layoutY="12.0" mnemonicParsing="false" onAction="#startStop" prefHeight="25.0" prefWidth="84.0" style="-fx-background-radius: 5;" text="Start" textFill="#0015ff" textOverrun="CENTER_ELLIPSIS" />
+      <ToggleButton fx:id="startButton" accessibleText="Stop" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#startStop" prefHeight="25.0" prefWidth="84.0" style="-fx-background-radius: 5;" text="Start" textFill="#0015ff" textOverrun="CENTER_ELLIPSIS" />
+      <ToggleButton fx:id="followButton" accessibleText="Stop" layoutX="480.0" layoutY="14.0" mnemonicParsing="false" onAction="#followToggle" prefHeight="25.0" prefWidth="84.0" style="-fx-background-radius: 5;" text="Follow" textFill="#0015ff" textOverrun="CENTER_ELLIPSIS" />
+      <Button fx:id="feedButton" layoutX="590.0" layoutY="14.0" mnemonicParsing="false" onAction="#feed" text="Feed" />
    </children>
 </Pane>

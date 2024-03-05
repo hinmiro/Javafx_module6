@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-import javax.swing.*;
-
 public class PetGui extends Application {
     @Override
     public void start(Stage stage) throws Exception {
